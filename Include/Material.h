@@ -10,6 +10,7 @@ struct Material{
     Vetor3 ks;
     float shininess;
 
+    Material() : ka(), kd(), ks(), shininess(1) {};
     Material(const Vetor3& amb, const Vetor3& dif, const Vetor3& espec, float alpha) : 
     ka(amb), kd(dif), ks(espec), shininess(alpha) {};
 };

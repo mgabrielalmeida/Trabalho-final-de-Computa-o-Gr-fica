@@ -8,12 +8,27 @@ class Vetor3{
 public:
     float x, y, z;
 
-    Vetor3();
-    Vetor3(float x_val, float y_val, float z_val);
+    Vetor3() : x(0), y(0), z(0) {} // Construtor padrão
 
-    float comprimento() const;
-    float comprimento_ao_quadrado() const;
-    Vetor3 normalizar() const;
+    Vetor3(float x_val, float y_val, float z_val) : x(x_val), y(y_val), z(z_val) {} // Construtor com valores
+
+    // MÉTODOS
+    // Retorna o comprimento (magnitude) do vetor
+    float comprimento() const{
+        return std::sqrt(comprimento_ao_quadrado());
+    }
+
+    // Retorna o comprimento ao quadrado (mais rápido, evita sqrt)
+    float comprimento_ao_quadrado() const{
+        return x*x + y*y + z*z;
+    }
+
+    // Retorna uma versão normalizada (comprimento 1) do vetor
+    Vetor3 normalizar() const{
+        float compr = comprimento();
+        if (compr == 0) return Vetor3(0, 0, 0); 
+        return Vetor3(x / compr, y / compr, z / compr);
+    }
 
     // OPERADORES
     // Negação (operador unário)
@@ -49,9 +64,6 @@ public:
         return *this *= (1.0f / escalar);
     }
 
-    // Podemos usar Ponto3 e Cor3 como nomes alternativos para Vetor3
-    using Ponto3 = Vetor3;
-    using Cor3 = Vetor3;
 };
 
 // Funções auxiliares de fora da classe que facilitam muito a manipulação de vetores
@@ -93,15 +105,19 @@ inline Vetor3 operator/(const Vetor3& v, float escalar){
 }
 
 // Produto Escalar (Dot Product)
-inline float produto_escalar(const Vetor3& v1, const Vetor3& v2){
+inline float prod_escalar(const Vetor3& v1, const Vetor3& v2){
     return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
 
 // Produto Vetorial (Cross Product)
-inline Vetor3 produto_vetorial(const Vetor3& v1, const Vetor3& v2){
+inline Vetor3 prod_vetorial(const Vetor3& v1, const Vetor3& v2){
     return Vetor3(
         v1.y * v2.z - v1.z * v2.y,
         v1.z * v2.x - v1.x * v2.z,
         v1.x * v2.y - v1.y * v2.x
     );
 }
+
+// Alias de tipo -> Podemos usar Ponto3 e Cor3 como nomes alternativos para Vetor3
+using Ponto3 = Vetor3;
+using Cor3 = Vetor3;
