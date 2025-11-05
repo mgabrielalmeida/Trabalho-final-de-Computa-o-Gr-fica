@@ -11,6 +11,7 @@ class Acertavel{
 public:
     Material material;
 
+    Acertavel() : material() {}
     Acertavel(const Material& m) : material(m) {}
     
     virtual HitRecords intersect(const Raio& raio) const = 0;
