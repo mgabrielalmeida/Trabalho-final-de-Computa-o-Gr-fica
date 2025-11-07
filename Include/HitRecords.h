@@ -16,7 +16,7 @@ struct HitRecords{
     Vetor3 ponto;
     const Acertavel* objetoAcertado;
 
-    HitRecords() : material(), t(-1), normal(), ponto(), objetoAcertado(nullptr) {}
+    HitRecords() : material(), t(0), normal(), ponto(), objetoAcertado(nullptr) {}
 
     HitRecords(const Material& mat, float T, const Vetor3& N, const Vetor3& Pi, const Acertavel* obj) :
     material(mat), t(T), normal(N), ponto(Pi), objetoAcertado(obj) {}

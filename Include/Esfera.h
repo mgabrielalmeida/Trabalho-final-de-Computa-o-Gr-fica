@@ -10,6 +10,7 @@ public:
     Ponto3 centro;
     float raio;
 
+    Esfera();
     Esfera(Ponto3 c, float r, const Material& M);
 
     virtual HitRecords intersect(const Raio& raio) const override;
