@@ -6,9 +6,6 @@
 
 #include "ListaDeAcertaveis.h"
 
-std::vector<Acertavel*> lista;
-float t; // O "t" a ser retornado
-
 ListaDeAcertaveis::ListaDeAcertaveis() {}
 ListaDeAcertaveis::ListaDeAcertaveis(const std::vector<Acertavel*>& l) : lista(l) {}
 
