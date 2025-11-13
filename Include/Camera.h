@@ -13,6 +13,8 @@ public:
 
     float Dx, Dy;
 
+    Vetor3 eixoX, eixoY, eixoZ;
+
     Camera();
     Camera(Ponto3 pos, Ponto3 o, Vetor3 dim, int nL, int nC);
 
