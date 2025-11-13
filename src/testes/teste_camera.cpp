@@ -35,11 +35,11 @@ int main(){
 
     wJanela = 2;
     hJanela = 2;
-    dJanela = 1;
+    dJanela = 0;
     nCol = 400;
     nLin = 400;
 
-    Vetor3 dimJanela = Vetor3(wJanela, hJanela, -dJanela);
+    Vetor3 dimJanela = Vetor3(wJanela, hJanela, dJanela);
     Camera camera = Camera(Ponto3(0, 0, 0), Ponto3(0, 0, -1), dimJanela, nLin, nCol);
 
     arquivo_ppm << "P3\n";

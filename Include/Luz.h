@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Vetor3.h"
 
 class Luz{
