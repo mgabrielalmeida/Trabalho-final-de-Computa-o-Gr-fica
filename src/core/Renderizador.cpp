@@ -21,7 +21,7 @@ Renderizador::Renderizador(const Camera& camera, const ListaDeAcertaveis& acerta
 
 void Renderizador::renderizar(){
     Raio ray;
-    HitRecords hit;
+    HitRecords hit, hitSombra;
     Ponto3 Pi;
 
     Cor3 cor_ambiente, cor_especular, cor_difusa, cor_final;
@@ -45,7 +45,7 @@ void Renderizador::renderizar(){
             hit = listaDeObjetos.intersect(ray);
             
             // Se não houve intersecção 
-            if(hit.t == 0){
+            if(hit.t < 1e-4){
                 arquivo_ppm << cor_background.x << " " << cor_background.y << " " << cor_background.z << "\n";
                 continue;
             }
@@ -63,8 +63,9 @@ void Renderizador::renderizar(){
                 L = L.normalizar();
 
                 ray_sombra = Raio(Pi+(0.001*L), L);
+                hitSombra = listaDeObjetos.intersect(ray_sombra);
 
-                if(listaDeObjetos.intersect(ray_sombra).t == 0){
+                if(hitSombra.t < 1e-4 || hitSombra.t > distL){
                     R = 2 * prod_escalar(N, L) * N - L;
 
                     // Cálculo da componente difusa
@@ -74,15 +75,15 @@ void Renderizador::renderizar(){
                     cor_especular += hit.material.ks * luz->intensidade * pow(std::max(0.0f, prod_escalar(R, V)), hit.material.shininess);
                 }
             }
-
-            Cor3 cor_sum = cor_ambiente + cor_difusa + cor_especular;
+            
+            cor_final = cor_ambiente + cor_difusa + cor_especular;
             cor_final = Cor3(
-                std::max(0.0f, std::min(255.0f, cor_sum.x)),
-                std::max(0.0f, std::min(255.0f, cor_sum.y)),
-                std::max(0.0f, std::min(255.0f, cor_sum.z))
+                std::max(0.0f, std::min(255.0f, cor_final.x)),
+                std::max(0.0f, std::min(255.0f, cor_final.y)),
+                std::max(0.0f, std::min(255.0f, cor_final.z))
             );
-
-            arquivo_ppm << cor_final.x << " " << cor_final.y << " " << cor_final.z << "\n";
+            
+            arquivo_ppm << cor_final.x * 255<< " " << cor_final.y * 255 << " " << cor_final.z * 255 << "\n";
         }
     }
     std::cout << "Arquivo ppm criado na pasta: " << caminhoArquivoPPM << " !\n";

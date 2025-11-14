@@ -16,7 +16,7 @@ int main(){
     Camera camera = Camera(Ponto3(0, 0, 0), Vetor3(0, 0, -1), Vetor3(2, 2, 0), 400, 400);
 
     Material vermelho = Material(
-        Vetor3(0.1, 0, 0),
+        Vetor3(0.3, 0, 0),
         Vetor3(0.8, 0, 0),
         Vetor3(0.5, 0.5, 0.5),
         32
