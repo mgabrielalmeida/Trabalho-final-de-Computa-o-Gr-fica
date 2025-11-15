@@ -3,6 +3,7 @@
 #include "Raio.h"
 #include "Camera.h"
 #include "Esfera.h"
+#include "Cilindro.h"
 #include "HitRecords.h"
 #include "ListaDeAcertaveis.h"
 #include "Luz.h"

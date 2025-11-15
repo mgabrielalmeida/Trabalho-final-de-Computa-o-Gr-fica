@@ -37,4 +37,3 @@ HitRecords Esfera::intersect(const Raio& ray) const{
 
     return HitRecords(material, t, normal, pi, this);
 }
-
