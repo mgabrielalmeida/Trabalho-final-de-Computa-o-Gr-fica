@@ -11,7 +11,7 @@
 #include <vector>
 
 // g++ -o src/testes/teste_cilindro.exe src/testes/teste_cilindro.cpp src/shapes/Cilindro.cpp src/core/ListaDeAcertaveis.cpp src/core/Camera.cpp src/core/Renderizador.cpp -I Include -std=c++17
-// .\src\testes\teste_cilindro.exe
+// ./src/testes/teste_cilindro.exe
 int main(){
     Camera camera = Camera(Ponto3(0, 4, 2), Ponto3(0, 0, -3), Vetor3(4, 4, 0), 400, 400);
 
