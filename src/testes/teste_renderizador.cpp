@@ -11,11 +11,12 @@
 #include "Objetos/Esfera.h"
 #include "Objetos/Cilindro.h"
 #include "Objetos/Cone.h"
+#include "Objetos/Plano.h"
 
 #include "Luzes/Luz.h"
 #include <vector>
 
-// g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Cone.cpp src/core/Renderizador.cpp -I Include -std=c++17
+// g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Plano.cpp src/shapes/Cone.cpp src/core/Renderizador.cpp -I Include -std=c++17
 // .\src\testes\teste_renderizador.exe
 int main(){
     Camera camera = Camera(Ponto3(0, 5, 3), Vetor3(0, 0, -1), Vetor3(2, 2, 0), 400, 400);
@@ -40,17 +41,19 @@ int main(){
     );
 
     std::vector<Luz*> listaLuzes;
-    Luz* luz = new Luz(Vetor3(2, 6, 3), Cor3(1, 1, 1));
+    Luz* luz = new Luz(Vetor3(3, 3, -1), Cor3(1, 1, 1));
     listaLuzes.push_back(luz);
 
     ListaDeAcertaveis listaObjetos;
 
+    Plano* planoVerde = new Plano(Ponto3(0, 0, 0), Vetor3(0, 1, 0), verde);
     Cilindro* cilindroVermelho = new Cilindro(Ponto3(0, 0, -1), Vetor3(0, 1, 0), 0.5, 1, vermelho);
     Cone* coneVermelho = new Cone(Ponto3(-0.5, 0, -0.2), Vetor3(0, 1, 0), 0.2, 1, vermelho);
     Esfera* esferaVerde = new Esfera(Vetor3(0.5, 0, -0.2), 0.2, vermelho);
     listaObjetos.inserir(coneVermelho);
     listaObjetos.inserir(cilindroVermelho);
     listaObjetos.inserir(esferaVerde);
+    listaObjetos.inserir(planoVerde);
 
     /*
     Esfera* esferaVermelha = new Esfera(Vetor3(0, -5, 0), 0.5, vermelho);

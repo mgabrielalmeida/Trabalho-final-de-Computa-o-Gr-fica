@@ -91,5 +91,5 @@ void Renderizador::renderizar(){
             arquivo_ppm << cor_final.x * 255<< " " << cor_final.y * 255 << " " << cor_final.z * 255 << "\n";
         }
     }
-    std::cout << "Arquivo ppm criado na pasta: " << caminhoArquivoPPM << " !\n";
+    std::cout << "Arquivo ppm criado no caminho: " << caminhoArquivoPPM << " !\n";
 }
