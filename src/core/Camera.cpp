@@ -4,8 +4,8 @@
 #include "Core/Raio.h"
 
 Camera::Camera() {}
-Camera::Camera(Ponto3 pos, Ponto3 o, Ponto3 dim, int nL, int nC)
-: posicao(pos), olhando_para(o), dimensoes_janela(dim), nLinhas(nL), nColunas(nC) {
+Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, Ponto3 dimensoes_janela, int numero_linhas, int numero_colunas)
+: posicao(posicao), olhando_para(olhando_para), dimensoes_janela(dimensoes_janela), nLinhas(numero_linhas), nColunas(numero_colunas) {
 
     Dx = dimensoes_janela.x/nColunas;
     Dy = dimensoes_janela.y/nLinhas;
