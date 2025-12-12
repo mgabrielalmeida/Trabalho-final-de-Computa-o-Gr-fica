@@ -1,16 +1,5 @@
 #pragma once
 
-<<<<<<< Updated upstream:Include/Renderizador.h
-#include "Raio.h"
-#include "Camera.h"
-#include "Esfera.h"
-#include "HitRecords.h"
-#include "ListaDeAcertaveis.h"
-#include "Luz.h"
-#include "Material.h"
-#include "Raio.h"
-#include "Vetor3.h"
-=======
 #include "Core/Raio.h"
 #include "Core/Camera.h"
 #include "Core/Raio.h"
@@ -24,7 +13,6 @@
 
 #include "Luzes/Luz.h"
 
->>>>>>> Stashed changes:Include/Core/Renderizador.h
 #include <string>
 #include <vector>
 
