@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Vetor3.h"
-#include "Material.h"
-#include "Raio.h"
-#include "Acertavel.h"
+#include "Core/Vetor3.h"
+#include "Core/Material.h"
+#include "Core/Raio.h"
+
+#include "Objetos/Acertavel.h"
 
 class Esfera : public Acertavel{
 public:
@@ -11,7 +12,7 @@ public:
     float raio;
 
     Esfera();
-    Esfera(Ponto3 c, float r, const Material& M);
+    Esfera(Ponto3 centro, float raio, const Material& material);
 
     virtual HitRecords intersect(const Raio& raio) const override;
 };

@@ -1,13 +1,18 @@
-#include "Renderizador.h"
-#include "Raio.h"
-#include "Camera.h"
-#include "Esfera.h"
-#include "HitRecords.h"
-#include "ListaDeAcertaveis.h"
-#include "Luz.h"
-#include "Material.h"
-#include "Raio.h"
-#include "Vetor3.h"
+#include "Core/Renderizador.h"
+
+#include "Core/Raio.h"
+#include "Core/Camera.h"
+#include "Core/Material.h"
+#include "Core/Raio.h"
+#include "Core/Vetor3.h"
+#include "Core/HitRecords.h"
+
+#include "Objetos/ListaDeAcertaveis.h"
+#include "Objetos/Esfera.h"
+#include "Objetos/Cilindro.h"
+#include "Objetos/Cone.h"
+
+#include "Luzes/Luz.h"
 #include <vector>
 
 // g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/core/Camera.cpp src/core/Renderizador.cpp -I Include -std=c++17

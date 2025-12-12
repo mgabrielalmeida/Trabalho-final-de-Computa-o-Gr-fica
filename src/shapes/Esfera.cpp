@@ -1,14 +1,19 @@
-#include "Esfera.h"
+#include "Objetos/Esfera.h"
 
-#include "Vetor3.h"
-#include "Material.h"
-#include "Raio.h"
-#include "Acertavel.h"
+#include "Core/Vetor3.h"
+#include "Core/Material.h"
+#include "Core/Raio.h"
+
+#include "Objetos/Acertavel.h"
+
 #include <cmath>
 
+// Construtores
 Esfera::Esfera() : centro (0, 0, 0), raio(1) {}
-Esfera::Esfera(Ponto3 c, float r, const Material& M) :  Acertavel(M), centro(c), raio(r) {}
+Esfera::Esfera(Ponto3 centro, float raio, const Material& material) 
+    : Acertavel(material), centro(centro), raio(raio) {}
 
+// Intersect da Esfera
 HitRecords Esfera::intersect(const Raio& ray) const{
     Ponto3 p0 = ray.origem;
     Vetor3 d = ray.dir;

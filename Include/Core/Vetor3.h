@@ -3,8 +3,8 @@
 #include <iostream>
 #include <cmath>
 
+// Classe que implementa um vetor de 3 dimensões
 class Vetor3{
-// comentários de explicação para cada método/operador estão no arquivo cpp
 public:
     float x, y, z;
 

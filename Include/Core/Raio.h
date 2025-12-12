@@ -1,6 +1,6 @@
-#include "Vetor3.h"
-
 #pragma once
+
+#include "Core/Vetor3.h"
 
 class Raio{
 public:
