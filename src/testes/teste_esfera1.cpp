@@ -1,9 +1,18 @@
-#include "Vetor3.h"
-#include "Esfera.h"
-#include "Raio.h"
-#include "Material.h"
-#include "HitRecords.h"
-#include "Acertavel.h"
+#include "Core/Renderizador.h"
+
+#include "Core/Raio.h"
+#include "Core/Camera.h"
+#include "Core/Material.h"
+#include "Core/Raio.h"
+#include "Core/Vetor3.h"
+#include "Core/HitRecords.h"
+
+#include "Objetos/ListaDeAcertaveis.h"
+#include "Objetos/Esfera.h"
+#include "Objetos/Cilindro.h"
+#include "Objetos/Cone.h"
+
+#include "Luzes/Luz.h"
 #include <fstream>
 
 // Teste de uma esfera vermelha ainda sem luz e sombra apenas pra testar o funcionamento da classe

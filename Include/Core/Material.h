@@ -1,9 +1,8 @@
 #pragma once
 
+#include "Core/Vetor3.h"
+
 // Struct que armazena constantes necessárias pro cálculo da luz/sombra de um determinado píxel
-
-#include "Vetor3.h"
-
 struct Material{
     Vetor3 ka;
     Vetor3 kd;

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Vetor3.h"
+#include "Core/Vetor3.h"
 
+// Classe base para os outros tipos de luzes que teremos no futuro mas também serve como uma luz pontual
 class Luz{
 public:
     Ponto3 posicao;

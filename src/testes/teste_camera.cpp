@@ -1,11 +1,13 @@
-#include "Vetor3.h"
-#include "Esfera.h"
-#include "Raio.h"
-#include "Material.h"
-#include "HitRecords.h"
-#include "Acertavel.h"
-#include "ListaDeAcertaveis.h"
-#include "Camera.h"
+#include "Core/Vetor3.h"
+#include "Core/HitRecords.h"
+#include "Core/Material.h"
+#include "Core/Raio.h"
+#include "Core/Camera.h"
+
+#include "Objetos/Esfera.h"
+#include "Objetos/Acertavel.h"
+#include "Objetos/ListaDeAcertaveis.h"
+
 #include <fstream>
 
 // g++ -o src/testes/teste_camera.exe src/testes/teste_camera.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/core/Camera.cpp -I Include -std=c++17

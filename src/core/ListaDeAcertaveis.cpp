@@ -1,10 +1,13 @@
-#include "Vetor3.h"
-#include "Acertavel.h"
-#include "Material.h"
-#include "HitRecords.h"
+#include "Objetos/ListaDeAcertaveis.h"
+
+#include "Core/Vetor3.h"
+#include "Core/Material.h"
+#include "Core/HitRecords.h"
+
+#include "Objetos/Acertavel.h"
+
 #include <vector>
 
-#include "ListaDeAcertaveis.h"
 
 ListaDeAcertaveis::ListaDeAcertaveis() {}
 ListaDeAcertaveis::ListaDeAcertaveis(const std::vector<Acertavel*>& l) : lista(l) {}

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Vetor3.h"
-#include "Raio.h"
+#include "Core/Vetor3.h"
+#include "Core/Raio.h"
 
 class Camera{
 public:

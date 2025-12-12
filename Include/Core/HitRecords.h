@@ -1,14 +1,12 @@
 #pragma once
 
-// Struct auxiliar que serve pra armazenar tudo que a gente precisa retornar quando há uma intersecção
-// de um raio com um objeto qualquer
-
-#include "Vetor3.h"
-#include "Raio.h"
-#include "Material.h"
+#include "Core/Vetor3.h"
+#include "Core/Raio.h"
+#include "Core/Material.h"
 
 class Acertavel;
 
+// Struct auxiliar que serve pra armazenar tudo que a gente precisa retornar quando há uma intersecção de um raio com um objeto qualquer
 struct HitRecords{
     Material material;
     float t;
