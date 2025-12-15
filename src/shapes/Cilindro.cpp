@@ -5,13 +5,18 @@
 #include "Core/Raio.h"
 
 #include "Objetos/Acertavel.h"
+#include "Objetos/Disco.h"
 
 #include <cmath>
 
 // Construtores
 Cilindro::Cilindro() : centro_base(0, 0, 0), eixo(0, 1, 0), raio(1), altura(2) {}
+
 Cilindro::Cilindro(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, const Material& material) 
     : Acertavel(material), centro_base(centro_base), eixo(eixo.normalizar()), raio(raio), altura(altura) {}
+
+Cilindro::Cilindro(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, const Material& material, bool base_sup, bool base_inf)
+    : Acertavel(material), centro_base(centro_base), eixo(eixo.normalizar()), raio(raio), altura(altura), base_sup(base_sup), base_inf(base_inf) {}
 
 // Intersect do Cilindro
 HitRecords Cilindro::intersect(const Raio& ray) const{
@@ -50,31 +55,21 @@ HitRecords Cilindro::intersect(const Raio& ray) const{
 
     // base inferior
     float t_base_inf = -1.0f;
-    float denom_inf = prod_escalar(eixo, d);
-    if(fabs(denom_inf) > 1e-6){
-        float t_cand = -prod_escalar(eixo, p0 - centro_base) / denom_inf;
-        if(t_cand > 1e-4){
-            Ponto3 pi = ray.pontoEmT(t_cand);
-            if((pi - centro_base).comprimento() <= raio){
-                t_base_inf = t_cand;
-            }
-        }
+    if(base_inf){
+        Disco base_inf = Disco(centro_base, eixo, raio, material);
+        HitRecords hit_base = base_inf.intersect(ray);
+        if(hit_base.t > 1e-4) t_base_inf = hit_base.t;
     }
 
     // base superior
     float t_base_sup = -1.0f;
-    Ponto3 centro_topo = centro_base + altura * eixo;
-    float denom_sup = prod_escalar(eixo, d);
-    if(fabs(denom_sup) > 1e-6){
-        float t_cand = -prod_escalar(eixo, p0 - centro_topo) / denom_sup;
-        if(t_cand > 1e-4){
-            Ponto3 pi = ray.pontoEmT(t_cand);
-            if((pi - centro_topo).comprimento() <= raio){
-                t_base_sup = t_cand;
-            }
-        }
+    if(base_sup){
+        Ponto3 centro_topo = centro_base + altura * eixo;
+        Disco base_sup = Disco(centro_topo, eixo, raio, material);
+        HitRecords hit_topo = base_sup.intersect(ray);
+        if(hit_topo.t > 1e-4) t_base_sup = hit_topo.t;
     }
-
+    
     // escolher o t mais próximo
     float t_final = -1.0f;
     int tipo = -1;
