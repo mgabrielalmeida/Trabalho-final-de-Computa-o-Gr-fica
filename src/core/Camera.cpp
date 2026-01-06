@@ -13,7 +13,7 @@ Camera::Camera() {}
 Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, float vfov, float aspect_ratio, int numero_linhas)
 : posicao(posicao), olhando_para(olhando_para), vfov(vfov), aspect_ratio(aspect_ratio), nLinhas(numero_linhas) {
 
-    nColunas = int(nLinhas / aspect_ratio);
+    nColunas = int(nLinhas * aspect_ratio);
 
     float d = (posicao - olhando_para).comprimento();
     float theta = vfov * M_PI / 180.0; // ângulo do vfov em radianos
