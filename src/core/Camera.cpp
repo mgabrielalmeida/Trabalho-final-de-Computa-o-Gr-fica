@@ -10,9 +10,10 @@
 #endif
 
 Camera::Camera() {}
-Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, float vfov, float aspect_ratio, int numero_linhas)
-: posicao(posicao), olhando_para(olhando_para), vfov(vfov), aspect_ratio(aspect_ratio), nLinhas(numero_linhas) {
+Camera::Camera(const Ponto3& posicao, const Ponto3& olhando_para, const Vetor3& vup, float vfov, float aspect_ratio, int numero_linhas)
+: posicao(posicao), olhando_para(olhando_para), vup(vup), vfov(vfov), aspect_ratio(aspect_ratio), nLinhas(numero_linhas) {
 
+    // Definição dos parâmetros relativos à imagem final
     nColunas = int(nLinhas * aspect_ratio);
 
     float d = (posicao - olhando_para).comprimento();
@@ -23,28 +24,20 @@ Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, float vfov, float aspect_rat
     Dx = larguraImagem/nColunas;
     Dy = alturaImagem/nLinhas;
 
+    // Cálculo dos vetores ortonormais com verificação de segurança para vup sugerido inadequado
     eixoZ = (posicao - olhando_para).normalizar(); 
 
-    Vetor3 v_up_mundo = Vetor3(0, 1, 0);
-
-    if (std::abs(eixoZ.y) > 0.999){
-        // nesse caso, estamos olhando para cima (ou para baixo) quase perfeitamente
-        Vetor3 v_up_temporario = Vetor3(0, 0, 1);
-        
-        // Se estivermos olhando reto para (0,0,1), o v_up_temp também falha,
-        // então usamos (1,0,0) nesse caso extremo.
-        if (std::abs(eixoZ.z) > 0.999) {
-             v_up_temporario = Vetor3(1, 0, 0);
+    if(std::abs(prod_escalar(vup, eixoZ)) > 0.999f){        
+        Vetor3 vup_alternativo = Vetor3(1, 0, 0);
+        if (std::abs(prod_escalar(eixoZ, vup_alternativo)) > 0.999f){
+            vup_alternativo = Vetor3(0, 0, 1);
         }
-
-        eixoX = prod_vetorial(v_up_temporario, eixoZ).normalizar();
-        eixoY = prod_vetorial(eixoZ, eixoX).normalizar();
-    } 
-    else{
-        // caso normal
-        eixoX = prod_vetorial(v_up_mundo, eixoZ).normalizar();
-        eixoY = prod_vetorial(eixoZ, eixoX).normalizar();
+        eixoX = prod_vetorial(vup_alternativo, eixoZ).normalizar();
     }
+    else eixoX = prod_vetorial(vup, eixoZ).normalizar();
+
+    eixoY = prod_vetorial(eixoZ, eixoX);
+    
 }
 
 Raio Camera::raioParaPonto(int x, int y){

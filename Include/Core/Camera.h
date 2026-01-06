@@ -22,10 +22,11 @@ public:
 
     float Dx, Dy; // tamanho de cada píxel
 
+    Vetor3 vup;
     Vetor3 eixoX, eixoY, eixoZ; // eixos ortonormais da câmera
 
     Camera();
-    Camera(Ponto3 posicao, Ponto3 olhando_para, float vfov, float aspect_ratio, int numero_linhas);
+    Camera(const Ponto3& posicao, const Ponto3& olhando_para, const Vetor3& vup, float vfov, float aspect_ratio, int numero_linhas);
 
     Raio raioParaPonto(int x, int y);
 };
