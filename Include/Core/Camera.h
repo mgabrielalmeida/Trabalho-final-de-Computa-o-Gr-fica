@@ -7,16 +7,25 @@ class Camera{
 public:
     Ponto3 posicao;
     Ponto3 olhando_para;
-    Vetor3 dimensoes_janela;
-    int nLinhas;
-    int nColunas;
 
-    float Dx, Dy;
+    float vfov; // ângulo de visão em graus
+    float aspect_ratio; // razão entre largura e altura
 
-    Vetor3 eixoX, eixoY, eixoZ;
+    float alturaImagem; // as dimensões da imagem são calculadas baseado no vfov e no aspect_ratio
+    float larguraImagem; 
+
+    int nLinhas; // essa é dada no construtor
+    int nColunas; // essa é calculada baseado no aspect_ratio, pra evitar quebrar a imagem
+    // diz respeito ao número de píxels na imagem
+
+    Ponto3 centro, primeiro_pixel; // coordenadas de alguns píxeis potencialmente importantes
+
+    float Dx, Dy; // tamanho de cada píxel
+
+    Vetor3 eixoX, eixoY, eixoZ; // eixos ortonormais da câmera
 
     Camera();
-    Camera(Ponto3 posicao, Ponto3 olhando_para, Vetor3 dimensoes_janela, int nL, int nC);
+    Camera(Ponto3 posicao, Ponto3 olhando_para, float vfov, float aspect_ratio, int numero_linhas);
 
     Raio raioParaPonto(int x, int y);
 };

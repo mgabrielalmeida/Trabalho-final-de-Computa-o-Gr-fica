@@ -3,12 +3,25 @@
 #include "Core/Vetor3.h"
 #include "Core/Raio.h"
 
-Camera::Camera() {}
-Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, Ponto3 dimensoes_janela, int numero_linhas, int numero_colunas)
-: posicao(posicao), olhando_para(olhando_para), dimensoes_janela(dimensoes_janela), nLinhas(numero_linhas), nColunas(numero_colunas) {
+#include <cmath>
 
-    Dx = dimensoes_janela.x/nColunas;
-    Dy = dimensoes_janela.y/nLinhas;
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+Camera::Camera() {}
+Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, float vfov, float aspect_ratio, int numero_linhas)
+: posicao(posicao), olhando_para(olhando_para), vfov(vfov), aspect_ratio(aspect_ratio), nLinhas(numero_linhas) {
+
+    nColunas = int(nLinhas / aspect_ratio);
+
+    float d = (posicao - olhando_para).comprimento();
+    float theta = vfov * M_PI / 180.0; // ângulo do vfov em radianos
+    alturaImagem = std::tan(theta/2);
+    larguraImagem = alturaImagem * aspect_ratio;
+
+    Dx = larguraImagem/nColunas;
+    Dy = alturaImagem/nLinhas;
 
     eixoZ = (posicao - olhando_para).normalizar(); 
 
@@ -35,8 +48,8 @@ Camera::Camera(Ponto3 posicao, Ponto3 olhando_para, Ponto3 dimensoes_janela, int
 }
 
 Raio Camera::raioParaPonto(int x, int y){
-    float u = -dimensoes_janela.x/2 + Dx/2 + x * Dx;
-    float v = dimensoes_janela.y/2 - Dy/2 - y * Dy;
+    float u = -larguraImagem/2 + Dx/2 + x * Dx;
+    float v = alturaImagem/2 - Dy/2 - y * Dy;
 
     Ponto3 coords = olhando_para + u * eixoX + v * eixoY;
 
