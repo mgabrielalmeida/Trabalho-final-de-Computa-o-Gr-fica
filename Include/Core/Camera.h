@@ -25,8 +25,11 @@ public:
     Vetor3 vup;
     Vetor3 eixoX, eixoY, eixoZ; // eixos ortonormais da câmera
 
+    int tipo_projecao; // tipo de projeção
+    // 0: perspectiva, 1: ortográfica, 2: oblíqua
+
     Camera();
-    Camera(const Ponto3& posicao, const Ponto3& olhando_para, const Vetor3& vup, float vfov, float aspect_ratio, int numero_linhas);
+    Camera(const Ponto3& posicao, const Ponto3& olhando_para, const Vetor3& vup, float vfov, float aspect_ratio, int numero_linhas, int tipo_projecao);
 
     Raio raioParaPonto(int x, int y);
 };

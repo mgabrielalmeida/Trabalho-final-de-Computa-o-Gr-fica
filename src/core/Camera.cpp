@@ -10,8 +10,8 @@
 #endif
 
 Camera::Camera() {}
-Camera::Camera(const Ponto3& posicao, const Ponto3& olhando_para, const Vetor3& vup, float vfov, float aspect_ratio, int numero_linhas)
-: posicao(posicao), olhando_para(olhando_para), vup(vup), vfov(vfov), aspect_ratio(aspect_ratio), nLinhas(numero_linhas) {
+Camera::Camera(const Ponto3& posicao, const Ponto3& olhando_para, const Vetor3& vup, float vfov, float aspect_ratio, int numero_linhas, int tipo)
+: posicao(posicao), olhando_para(olhando_para), vup(vup), vfov(vfov), aspect_ratio(aspect_ratio), nLinhas(numero_linhas), tipo_projecao(tipo) {
 
     // Definição dos parâmetros relativos à imagem final
     nColunas = int(nLinhas * aspect_ratio);
@@ -46,5 +46,9 @@ Raio Camera::raioParaPonto(int x, int y){
 
     Ponto3 coords = olhando_para + u * eixoX + v * eixoY;
 
-    return Raio(posicao, coords - posicao);
+    if(tipo_projecao == 0) return Raio(posicao, coords - posicao);
+    if(tipo_projecao == 1){
+        Ponto3 origem = posicao + (u * eixoX) + (v * eixoY);
+        return Raio(origem, -eixoZ);
+    }
 }

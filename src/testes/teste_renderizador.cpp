@@ -22,7 +22,7 @@
 
 // g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/utils/Colors.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Plano.cpp src/shapes/Cone.cpp src/shapes/Disco.cpp src/core/Renderizador.cpp -I Include -std=c++17; .\src\testes\teste_renderizador.exe; code src/testes/imagens_geradas/teste_renderizador.ppm
 int main(){
-    Camera camera = Camera(Ponto3(0, 5, 1.5), Ponto3(0, 0, -1), Vetor3(0, 1, 0), 130.0, 1.77, 400);
+    Camera camera = Camera(Ponto3(0, 5, 1.5), Ponto3(0, 0, -1), Vetor3(0, 1, 0), 130.0, 1.77, 400, 0);
 
     std::vector<Luz*> listaLuzes;
     Luz* luz = new Luz(Vetor3(4, 6, 2), Cor3(1, 1, 1));
