@@ -13,6 +13,7 @@
 #include "Objetos/Cone.h"
 #include "Objetos/Plano.h"
 #include "Objetos/Disco.h"
+#include "Objetos/Triangulo.h"
 
 #include "Luzes/Luz.h"
 
@@ -20,7 +21,7 @@
 
 #include <vector>
 
-// g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/utils/Colors.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Plano.cpp src/shapes/Cone.cpp src/shapes/Disco.cpp src/core/Renderizador.cpp -I Include -std=c++17; .\src\testes\teste_renderizador.exe; code src/testes/imagens_geradas/teste_renderizador.ppm
+// g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/utils/Colors.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Plano.cpp src/shapes/Cone.cpp src/shapes/Disco.cpp src/shapes/Triangulo.cpp src/core/Renderizador.cpp -I Include -std=c++17; .\src\testes\teste_renderizador.exe; code src/testes/imagens_geradas/teste_renderizador.ppm
 int main(){
     Camera camera = Camera(Ponto3(0, 5, 1.5), Ponto3(0, 0, -1), Vetor3(0, 1, 0), 130.0, 1.77, 400, 0);
 
@@ -29,22 +30,6 @@ int main(){
     listaLuzes.push_back(luz);
 
     ListaDeAcertaveis listaObjetos;
-
-    // Esfera* ouro = new Esfera(Ponto3(1, 0, -1), 0.3, Colors::ouro);
-    // Esfera* prata = new Esfera(Ponto3(0, 0, -1), 0.3, Colors::prata);
-    // Esfera* bronze = new Esfera(Ponto3(-1, 0, -1), 0.3, Colors::bronze);
-    // Esfera* borracha = new Esfera(Ponto3(1, 0, 0), 0.3, Colors::borracha);
-    // Esfera* plastico = new Esfera(Ponto3(0, 0, 0), 0.3, Colors::plastico);
-    // Esfera* aluminio = new Esfera(Ponto3(-1, 0, 0), 0.3, Colors::aluminio);
-    // Plano* ferro = new Plano(Ponto3(0, -2, 0), Vetor3(0, 1, 0), Colors::ferro);
-
-    // listaObjetos.inserir(ouro);
-    // listaObjetos.inserir(ferro);
-    // listaObjetos.inserir(aluminio);
-    // listaObjetos.inserir(plastico);
-    // listaObjetos.inserir(borracha);
-    // listaObjetos.inserir(bronze);
-    // listaObjetos.inserir(prata);
     
     Plano* planoVerde = new Plano(Ponto3(0, 0, 0), Vetor3(0, 1, 0), Colors::verde);
     Cilindro* cilindroRoxo = new Cilindro(Ponto3(0, 0, -1), Vetor3(0, 1, 0), 0.5, 1, Colors::roxo, false, true);
