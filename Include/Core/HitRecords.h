@@ -13,9 +13,13 @@ struct HitRecords{
     Vetor3 normal;
     Vetor3 ponto;
     const Acertavel* objetoAcertado;
+    float u, v;
 
-    HitRecords() : material(), t(0), normal(), ponto(), objetoAcertado(nullptr) {}
+    HitRecords() : material(), t(0), normal(), ponto(), objetoAcertado(nullptr), u(0), v(0) {}
 
     HitRecords(const Material& material, float T, const Vetor3& normal, const Vetor3& ponto_interseccao, const Acertavel* objeto_acertado) :
-    material(material), t(T), normal(normal), ponto(ponto_interseccao), objetoAcertado(objeto_acertado) {}
+    material(material), t(T), normal(normal), ponto(ponto_interseccao), objetoAcertado(objeto_acertado), u(0), v(0) {}
+
+    HitRecords(const Material& material, float T, const Vetor3& normal, const Vetor3& ponto_interseccao, const Acertavel* objeto_acertado, float u, float v) :
+    material(material), t(T), normal(normal), ponto(ponto_interseccao), objetoAcertado(objeto_acertado), u(u), v(v) {}
 };

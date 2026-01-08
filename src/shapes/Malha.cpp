@@ -23,6 +23,17 @@ void Malha::inserirTriangulo(const Ponto3& v0, const Ponto3& v1, const Ponto3& v
     indices.push_back(i+2);
 }
 
+void Malha::inserirTriangulo(const Triangulo& triangulo){
+    int i = vertices.size();
+    vertices.push_back(triangulo.v0);
+    vertices.push_back(triangulo.v1);
+    vertices.push_back(triangulo.v2);
+    
+    indices.push_back(i);
+    indices.push_back(i+1);
+    indices.push_back(i+2);
+}
+
 void Malha::enviarParaCena(ListaDeAcertaveis& listaDeObjetos){
     for (size_t i = 0; i < indices.size(); i += 3){
         Ponto3 v0 = vertices[indices[i]];

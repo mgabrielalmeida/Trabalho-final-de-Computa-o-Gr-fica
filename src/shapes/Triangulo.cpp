@@ -7,10 +7,15 @@
 
 #include "Objetos/Acertavel.h"
 
+#define pff pair<float,float>
+
 Triangulo::Triangulo() {}
 Triangulo::Triangulo(const Ponto3& v0, const Ponto3& v1, const Ponto3& v2, const Material& material) 
     : v0(v0), v1(v1), v2(v2), Acertavel(material) {}
+Triangulo::Triangulo(const Ponto3& v0, const Ponto3& v1, const Ponto3& v2, const Material& material, std::pff uv0, std::pff uv1, std::pff uv2)
+ : v0(v0), v1(v1), v2(v2), uv0(uv0), uv1(uv1), uv2(uv2) {}
 
+// Intersect do Triângulo
 HitRecords Triangulo::intersect(const Raio& raio) const{
     Vetor3 aresta1 = v1 - v0;
     Vetor3 aresta2 = v2 - v0;
@@ -34,6 +39,13 @@ HitRecords Triangulo::intersect(const Raio& raio) const{
     float t = f * prod_escalar(aresta2, q);
     if(t < 1e-4) return HitRecords();
 
+    float u_bary = u;
+    float v_bary = v;
+    float w_bary = 1.0 - u_bary - v_bary;
+
+    float u_tex = (w_bary * uv0.first) + (u_bary * uv1.first) + (v_bary * uv2.first);
+    float v_tex = (w_bary * uv0.second) + (u_bary * uv1.second) + (v_bary * uv2.second);
+
     HitRecords hit;
 
     Vetor3 normal_geometrica = prod_vetorial(aresta1, aresta2).normalizar();
@@ -45,6 +57,8 @@ HitRecords Triangulo::intersect(const Raio& raio) const{
     hit.ponto = raio.pontoEmT(t);
     hit.material = material;
     hit.objetoAcertado = this;
+    hit.u = u_tex;
+    hit.v = v_tex;
 
     return hit;
 }

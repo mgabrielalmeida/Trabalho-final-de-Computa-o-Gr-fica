@@ -40,5 +40,11 @@ HitRecords Esfera::intersect(const Raio& ray) const{
     Ponto3 pi = ray.pontoEmT(t);
     Vetor3 normal = (pi - centro).normalizar();
 
-    return HitRecords(material, t, normal, pi, this);
+    float theta = acos(-normal.y);
+    float phi = atan2(-normal.z, normal.x) + M_PI;
+
+    float u = phi / (2 * M_PI);
+    float v = theta / M_PI;
+
+    return HitRecords(material, t, normal, pi, this, u, v);
 }

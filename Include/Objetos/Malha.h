@@ -6,6 +6,7 @@
 
 #include "Objetos/Acertavel.h"
 #include "Objetos/ListaDeAcertaveis.h"
+#include "Objetos/Triangulo.h"
 
 #include <vector>
 
@@ -19,5 +20,6 @@ public:
     Malha(const std::vector<Ponto3>& vertices, const std::vector<int>& indices, const Material& material);
 
     void inserirTriangulo(const Ponto3& v0, const Ponto3& v1, const Ponto3& v2);
+    void inserirTriangulo(const Triangulo& triangulo);
     void enviarParaCena(ListaDeAcertaveis& listaDeObjetos);
 };
