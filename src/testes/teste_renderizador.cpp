@@ -37,8 +37,8 @@ int main(){
 
     // 1. Crie o material baseado na imagem
     // O segundo parametro (Ks) controla se o tijolo brilha. (0,0,0) seria tijolo fosco.
-    Material* xadrez = new TexturaImagem("xadrez.jpg", Cor3(0.1, 0.1, 0.1), 10.0f);
-    Material* sinuca = new TexturaImagem("sinuca.jpg", Cor3(0.1, 0.1, 0.1), 16.0f);
+    Material* xadrez = new TexturaImagem("Images/xadrez.jpg", Cor3(0.1, 0.1, 0.1), 10.0f);
+    Material* sinuca = new TexturaImagem("Images/sinuca.jpg", Cor3(0.1, 0.1, 0.1), 16.0f);
     
     Plano* planoVerde = new Plano(Ponto3(0, 0, 0), Vetor3(0, 1, 0), Colors::verde);
     Cilindro* cilindroRoxo = new Cilindro(Ponto3(0, 0, -1), Vetor3(0, 1, 0), 0.5, 1, Colors::roxo, false, true);
