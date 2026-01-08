@@ -6,6 +6,7 @@
 #include "Core/Raio.h"
 #include "Core/Vetor3.h"
 #include "Core/HitRecords.h"
+#include "Core/TexturaImagem.h"
 
 #include "Objetos/ListaDeAcertaveis.h"
 #include "Objetos/Esfera.h"
@@ -20,9 +21,11 @@
 
 #include "Utils/Colors.h"
 
+#include "External/stb_image.h"
+
 #include <vector>
 
-// g++ -o src/testes/teste_renderizador.exe src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/utils/Colors.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Plano.cpp src/shapes/Cone.cpp src/shapes/Disco.cpp src/shapes/Triangulo.cpp src/shapes/Malha.cpp src/core/Renderizador.cpp -I Include -std=c++17; .\src\testes\teste_renderizador.exe; code src/testes/imagens_geradas/teste_renderizador.ppm
+// g++ -o src/testes/teste_renderizador.exe src/external/External.cpp src/testes/teste_renderizador.cpp src/shapes/Esfera.cpp src/core/ListaDeAcertaveis.cpp src/utils/Colors.cpp src/core/Camera.cpp src/shapes/Cilindro.cpp src/shapes/Plano.cpp src/shapes/Cone.cpp src/shapes/Disco.cpp src/shapes/Triangulo.cpp src/shapes/Malha.cpp src/core/Renderizador.cpp -I Include -std=c++17; .\src\testes\teste_renderizador.exe; code src/testes/imagens_geradas/teste_renderizador.ppm
 int main(){
     Camera camera = Camera(Ponto3(0, 3, 1.5), Ponto3(0, 0, -1), Vetor3(0, 1, 0), 140.0, 1.77, 400, 0);
 
@@ -31,17 +34,24 @@ int main(){
     listaLuzes.push_back(luz);
 
     ListaDeAcertaveis listaObjetos;
+
+    // 1. Crie o material baseado na imagem
+    // O segundo parametro (Ks) controla se o tijolo brilha. (0,0,0) seria tijolo fosco.
+    Material* xadrez = new TexturaImagem("xadrez.jpg", Cor3(0.1, 0.1, 0.1), 10.0f);
+    Material* sinuca = new TexturaImagem("sinuca.jpg", Cor3(0.1, 0.1, 0.1), 16.0f);
     
     Plano* planoVerde = new Plano(Ponto3(0, 0, 0), Vetor3(0, 1, 0), Colors::verde);
     Cilindro* cilindroRoxo = new Cilindro(Ponto3(0, 0, -1), Vetor3(0, 1, 0), 0.5, 1, Colors::roxo, false, true);
     Cone* coneVermelho = new Cone(Ponto3(-0.5, 0, -0.2), Vetor3(0, 1, 0), 0.2, 1, Colors::vermelho);
     Esfera* esferaAzul = new Esfera(Vetor3(0.5, 0, -0.2), 0.2, Colors::azul);
+    Esfera* bolaDeSinuca = new Esfera(Ponto3(-1.3, 0.3, -0.9), 0.3, sinuca);
     Disco* agua = new Disco(Ponto3(0, 0.4, -1), Vetor3(0, 1, 0), 0.5, Colors::ciano);
     listaObjetos.inserir(coneVermelho);
     listaObjetos.inserir(cilindroRoxo);
     listaObjetos.inserir(esferaAzul);
     listaObjetos.inserir(planoVerde);
     listaObjetos.inserir(agua);
+    listaObjetos.inserir(bolaDeSinuca);
 
     Malha malha;
     // Face 1 (V0 -> V1 -> Topo)
