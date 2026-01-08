@@ -11,7 +11,7 @@
 // Construtores
 Cone::Cone() : centro_base(0,0,0), eixo(0,1,0), raio(1), altura(2) {}
 
-Cone::Cone(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, const Material& material) 
+Cone::Cone(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, Material* material) 
     : Acertavel(material), centro_base(centro_base), eixo(eixo.normalizar()), raio(raio), altura(altura) {}
 
 // Intersect do Cone

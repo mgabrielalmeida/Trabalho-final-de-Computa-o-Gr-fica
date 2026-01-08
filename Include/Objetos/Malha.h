@@ -14,10 +14,10 @@ class Malha{
 public:
     std::vector<Ponto3> vertices;
     std::vector<int> indices;
-    Material material;
+    Material* material;
 
     Malha();
-    Malha(const std::vector<Ponto3>& vertices, const std::vector<int>& indices, const Material& material);
+    Malha(const std::vector<Ponto3>& vertices, const std::vector<int>& indices, Material* material);
 
     void inserirTriangulo(const Ponto3& v0, const Ponto3& v1, const Ponto3& v2);
     void inserirTriangulo(const Triangulo& triangulo);

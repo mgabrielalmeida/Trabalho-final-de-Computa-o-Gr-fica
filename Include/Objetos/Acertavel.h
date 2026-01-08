@@ -9,10 +9,10 @@
 // Classe abstrata que serve de base para todos os objetos que colocaremos na cena
 class Acertavel{
 public:
-    Material material;
+    Material* material;
 
     Acertavel() : material() {}
-    Acertavel(const Material& material) : material(material) {}
+    Acertavel(Material* material) : material(material) {}
     
     virtual HitRecords intersect(const Raio& raio) const = 0;
 };

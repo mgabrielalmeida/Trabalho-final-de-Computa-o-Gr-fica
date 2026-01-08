@@ -13,7 +13,7 @@ public:
     float raio;
 
     Disco();
-    Disco(const Ponto3& centro, const Vetor3& normal, float raio, const Material& material);
+    Disco(const Ponto3& centro, const Vetor3& normal, float raio, Material* material);
 
     virtual HitRecords intersect(const Raio& raio) const override;
 };

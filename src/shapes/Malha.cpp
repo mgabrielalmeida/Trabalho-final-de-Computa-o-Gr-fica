@@ -9,7 +9,7 @@
 #include <vector>
 
 Malha::Malha() {}
-Malha::Malha(const std::vector<Ponto3>& vertices, const std::vector<int>& indices, const Material& material)
+Malha::Malha(const std::vector<Ponto3>& vertices, const std::vector<int>& indices, Material* material)
     : vertices(vertices), indices(indices), material(material) {}
 
 void Malha::inserirTriangulo(const Ponto3& v0, const Ponto3& v1, const Ponto3& v2){

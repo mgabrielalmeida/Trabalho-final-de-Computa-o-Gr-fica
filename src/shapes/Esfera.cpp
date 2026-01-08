@@ -8,9 +8,13 @@
 
 #include <cmath>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 // Construtores
 Esfera::Esfera() : centro (0, 0, 0), raio(1) {}
-Esfera::Esfera(Ponto3 centro, float raio, const Material& material) 
+Esfera::Esfera(Ponto3 centro, float raio, Material* material) 
     : Acertavel(material), centro(centro), raio(raio) {}
 
 // Intersect da Esfera

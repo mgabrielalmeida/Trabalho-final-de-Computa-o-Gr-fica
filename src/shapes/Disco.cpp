@@ -8,7 +8,7 @@
 #include "Objetos/Plano.h"
 
 Disco::Disco() {}
-Disco::Disco(const Ponto3& centro, const Vetor3& normal, float raio, const Material& material)
+Disco::Disco(const Ponto3& centro, const Vetor3& normal, float raio, Material* material)
     : Plano(centro, normal, material), raio(raio) {}
 
 // Intersect do Disco

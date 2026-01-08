@@ -2,84 +2,84 @@
 
 
 // Cores básicas
-const Material Colors::vermelho = Material(
+CorSolida* Colors::vermelho = new CorSolida(
     Vetor3(0.2, 0.0, 0.0),   // Ambiente
     Vetor3(0.8, 0.0, 0.0),   // Difusa
     Vetor3(0.5, 0.5, 0.5),   // Especular
     32
 );
 
-const Material Colors::verde = Material(
+CorSolida* Colors::verde = new CorSolida(
     Vetor3(0.0, 0.2, 0.0),
     Vetor3(0.0, 0.8, 0.0),
     Vetor3(0.5, 0.5, 0.5),
     32
 );
 
-const Material Colors::azul = Material(
+CorSolida* Colors::azul = new CorSolida(
     Vetor3(0.0, 0.0, 0.2),
     Vetor3(0.0, 0.0, 0.8),
     Vetor3(0.5, 0.5, 0.5),
     32
 );
 
-const Material Colors::amarelo = Material(
+CorSolida* Colors::amarelo = new CorSolida(
     Vetor3(0.2, 0.2, 0.0),
     Vetor3(0.8, 0.8, 0.0),
     Vetor3(0.5, 0.5, 0.5),
     32
 );
 
-const Material Colors::ciano = Material(
+CorSolida* Colors::ciano = new CorSolida(
     Vetor3(0.0, 0.2, 0.2),
     Vetor3(0.0, 0.8, 0.8),
     Vetor3(0.5, 0.5, 0.5),
     32
 );
 
-const Material Colors::magenta = Material(
+CorSolida* Colors::magenta = new CorSolida(
     Vetor3(0.2, 0.0, 0.2),
     Vetor3(0.8, 0.0, 0.8),
     Vetor3(0.5, 0.5, 0.5),
     32
 );
 
-const Material Colors::branco = Material(
+CorSolida* Colors::branco = new CorSolida(
     Vetor3(0.2, 0.2, 0.2),
     Vetor3(0.9, 0.9, 0.9),
     Vetor3(0.7, 0.7, 0.7),
     64
 );
 
-const Material Colors::preto = Material(
+CorSolida* Colors::preto = new CorSolida(
     Vetor3(0.02, 0.02, 0.02),
     Vetor3(0.05, 0.05, 0.05),
     Vetor3(0.2, 0.2, 0.2),
     8
 );
 
-const Material Colors::cinza = Material(
+CorSolida* Colors::cinza = new CorSolida(
     Vetor3(0.2, 0.2, 0.2),
     Vetor3(0.5, 0.5, 0.5),
     Vetor3(0.4, 0.4, 0.4),
     32
 );
 
-const Material Colors::roxo = Material(
+CorSolida* Colors::roxo = new CorSolida(
     Vetor3(0.2, 0.0, 0.2),
     Vetor3(0.6, 0.0, 0.6),
     Vetor3(0.6, 0.6, 0.6),
     48
 );
 
-const Material Colors::laranja = Material(
+CorSolida* Colors::laranja = new CorSolida(
     Vetor3(0.25, 0.1, 0.0),
     Vetor3(0.9, 0.4, 0.0),
     Vetor3(0.5, 0.5, 0.5),
     32
 );
 
-const Material Colors::rosa = Material(
+CorSolida* Colors::rosa = new CorSolida(
     Vetor3(0.25, 0.1, 0.15),
     Vetor3(0.9, 0.4, 0.6),
     Vetor3(0.6, 0.6, 0.6),
@@ -87,63 +87,63 @@ const Material Colors::rosa = Material(
 );
 
 // Materiais diferentes
-const Material Colors::metal = Material(
+CorSolida* Colors::metal = new CorSolida(
     Vetor3(0.25, 0.25, 0.25),
     Vetor3(0.4, 0.4, 0.4),
     Vetor3(0.9, 0.9, 0.9),
     128
 );
 
-const Material Colors::plastico = Material(
+CorSolida* Colors::plastico = new CorSolida(
     Vetor3(0.2, 0.2, 0.2),
     Vetor3(0.6, 0.6, 0.6),
     Vetor3(0.8, 0.8, 0.8),
     64
 );
 
-const Material Colors::borracha = Material(
+CorSolida* Colors::borracha = new CorSolida(
     Vetor3(0.05, 0.05, 0.05),
     Vetor3(0.1, 0.1, 0.1),
     Vetor3(0.05, 0.05, 0.05),
     4
 );
 
-const Material Colors::ouro = Material(
+CorSolida* Colors::ouro = new CorSolida(
     Vetor3(0.25, 0.20, 0.07),   // Ambiente
     Vetor3(0.35, 0.30, 0.10),   // Difusa (baixa)
     Vetor3(0.90, 0.78, 0.34),   // Especular (dourado)
     128
 );
 
-const Material Colors::prata = Material(
+CorSolida* Colors::prata = new CorSolida(
     Vetor3(0.25, 0.25, 0.25),
     Vetor3(0.30, 0.30, 0.30),
     Vetor3(0.95, 0.95, 0.95),
     128
 );
 
-const Material Colors::cobre = Material(
+CorSolida* Colors::cobre = new CorSolida(
     Vetor3(0.25, 0.15, 0.10),
     Vetor3(0.35, 0.20, 0.15),
     Vetor3(0.95, 0.64, 0.54),
     128
 );
 
-const Material Colors::bronze = Material(
+CorSolida* Colors::bronze = new CorSolida(
     Vetor3(0.21, 0.13, 0.05),
     Vetor3(0.30, 0.20, 0.10),
     Vetor3(0.80, 0.50, 0.20),
     96
 );
 
-const Material Colors::aluminio = Material(
+CorSolida* Colors::aluminio = new CorSolida(
     Vetor3(0.20, 0.20, 0.20),
     Vetor3(0.30, 0.30, 0.30),
     Vetor3(0.88, 0.88, 0.88),
     96
 );
 
-const Material Colors::ferro = Material(
+CorSolida* Colors::ferro = new CorSolida(
     Vetor3(0.15, 0.15, 0.15),
     Vetor3(0.25, 0.25, 0.25),
     Vetor3(0.70, 0.70, 0.70),

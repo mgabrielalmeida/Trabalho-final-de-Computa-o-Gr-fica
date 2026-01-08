@@ -8,7 +8,7 @@
 #include "Objetos/Acertavel.h"
 
 Plano::Plano() {}
-Plano::Plano(const Ponto3& p, const Vetor3& n, const Material& m) 
+Plano::Plano(const Ponto3& p, const Vetor3& n, Material* m) 
     : Acertavel(m), ponto_ref(p), normal(n.normalizar()) {}
 
     

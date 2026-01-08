@@ -12,7 +12,7 @@ public:
     Vetor3 normal;
 
     Plano();
-    Plano(const Ponto3& ponto_referencia, const Vetor3& normal, const Material& material);
+    Plano(const Ponto3& ponto_referencia, const Vetor3& normal, Material* material);
 
     virtual HitRecords intersect(const Raio& raio) const override;
 };

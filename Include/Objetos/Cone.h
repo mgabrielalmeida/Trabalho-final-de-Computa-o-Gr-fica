@@ -14,7 +14,7 @@ public:
     float altura;
 
     Cone();
-    Cone(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, const Material& material);
+    Cone(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, Material* material);
     
     virtual HitRecords intersect(const Raio& ray) const override;
 };

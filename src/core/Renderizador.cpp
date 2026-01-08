@@ -59,8 +59,14 @@ void Renderizador::renderizar(){
             N = hit.normal.normalizar();
             V = (camera.posicao - Pi).normalizar();
 
+            Cor3 ka, kd, ks; float shininess;
+            ka = hit.material->get_ka(hit.u, hit.v);
+            kd = hit.material->get_kd(hit.u, hit.v);
+            ks = hit.material->get_ks(hit.u, hit.v);
+            shininess = hit.material->get_shininess();
+
             // Cálculo da componente ambiente
-            cor_ambiente = i_ambiente * hit.material.ka;
+            cor_ambiente = i_ambiente * ka;
 
             for(auto luz : listaDeLuzes){
                 L = luz->posicao - Pi;
@@ -74,10 +80,10 @@ void Renderizador::renderizar(){
                     R = 2 * prod_escalar(N, L) * N - L;
 
                     // Cálculo da componente difusa
-                    cor_difusa += hit.material.kd * luz->intensidade * std::max(0.0f, prod_escalar(N,L));
+                    cor_difusa += kd * luz->intensidade * std::max(0.0f, prod_escalar(N,L));
 
                     // Cálculo da componente especular
-                    cor_especular += hit.material.ks * luz->intensidade * pow(std::max(0.0f, prod_escalar(R, V)), hit.material.shininess);
+                    cor_especular += ks * luz->intensidade * pow(std::max(0.0f, prod_escalar(R, V)), shininess);
                 }
             }
             

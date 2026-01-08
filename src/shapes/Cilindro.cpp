@@ -12,10 +12,10 @@
 // Construtores
 Cilindro::Cilindro() : centro_base(0, 0, 0), eixo(0, 1, 0), raio(1), altura(2) {}
 
-Cilindro::Cilindro(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, const Material& material) 
+Cilindro::Cilindro(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, Material* material) 
     : Acertavel(material), centro_base(centro_base), eixo(eixo.normalizar()), raio(raio), altura(altura) {}
 
-Cilindro::Cilindro(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, const Material& material, bool base_sup, bool base_inf)
+Cilindro::Cilindro(Ponto3 centro_base, Vetor3 eixo, float raio, float altura, Material* material, bool base_sup, bool base_inf)
     : Acertavel(material), centro_base(centro_base), eixo(eixo.normalizar()), raio(raio), altura(altura), base_sup(base_sup), base_inf(base_inf) {}
 
 // Intersect do Cilindro
